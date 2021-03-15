@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
+    protected $guarded = ['id'];
     use HasFactory;
 
     public function course()
