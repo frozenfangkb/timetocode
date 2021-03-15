@@ -28,6 +28,26 @@ class Course extends Model
         return $this->hasMany('App\Models\Review');
     }
 
+    public function requirements()
+    {
+        return $this->hasMany('App\Models\Requirement');
+    }
+
+    public function goals()
+    {
+        return $this->hasMany('App\Models\Goal');
+    }
+
+    public function audiences()
+    {
+        return $this->hasMany('App\Models\Audience');
+    }
+
+    public function sections()
+    {
+        return $this->hasMany('App\Models\Section');
+    }
+
     public function level()
     {
         return $this->belongsTo('App\Models\Level');
@@ -41,5 +61,15 @@ class Course extends Model
     public function price()
     {
         return $this->belongsTo('App\Models\Price');
+    }
+
+    public function image()
+    {
+        return $this->morphOne('App\Models\Image', 'imageable');
+    }
+
+    public function lessons()
+    {
+        return $this->hasManyThrough('App\Models\Lesson', 'App\Models\Section');
     }
 }
