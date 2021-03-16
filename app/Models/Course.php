@@ -8,11 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     protected $guarded = ['id', 'status'];
+    protected $withCount = ['students', 'reviews'];
     use HasFactory;
 
     const DRAFT = 1;
     const IN_REVIEW = 2;
     const PUBLISHED = 3;
+
+    public function getRatingAttribute()
+    {
+        if($this->reviews_count)
+        {
+            return round($this->reviews->avg('rating'), 1);
+        }
+        
+        return 5;
+    }
 
     public function teacher()
     {
@@ -21,7 +32,7 @@ class Course extends Model
 
     public function students()
     {
-        return $this->belongsToMany('App\Models\Users');
+        return $this->belongsToMany('App\Models\User');
     }
 
     public function reviews()
