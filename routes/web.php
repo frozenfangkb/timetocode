@@ -29,4 +29,4 @@ Route::post('courses/{course}/enrolled', [CourseController::class, 'enrolled'])-
 
 Route::get('course-status/{course}', function ($id) {
     return "temp";
-})->name('course.status');
+})->name('courses.status');

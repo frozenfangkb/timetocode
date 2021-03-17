@@ -116,7 +116,7 @@
                             </button>
                         </form>
                     @else
-                        <a class="main-btn mt-4" href="{{route('course.status', $course)}}">Continuar con el curso</a>
+                        <a class="main-btn mt-4" href="{{route('courses.status', $course)}}">Continuar con el curso</a>
                     @endcan
 
                     
