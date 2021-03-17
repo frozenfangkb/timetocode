@@ -37,7 +37,7 @@
                 ({{$course->students_count}})
             </p>
         </div>
-        <a href="{{route('courses.show', $course)}}" class="block text-center w-full mt-4 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+        <a href="{{route('courses.show', $course)}}" class="main-btn">
             Más información
         </a>
     </div>
