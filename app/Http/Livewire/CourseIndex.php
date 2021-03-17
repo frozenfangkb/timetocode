@@ -4,14 +4,36 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use App\Models\Course;
+use App\Models\Category;
+use App\Models\Level;
+
+use Livewire\WithPagination;
 
 class CourseIndex extends Component
 {
+
+    use WithPagination;
+
+    public $category_id;
+    public $level_id;
+
     public function render()
     {
 
-        $courses = Course::where('status', Course::PUBLISHED)->latest('id')->paginate(8);
+        $categories = Category::all();
+        $levels = Level::all();
 
-        return view('livewire.course-index', compact('courses'));
+        $courses = Course::where('status', Course::PUBLISHED)
+                            ->category($this->category_id)
+                            ->level($this->level_id)
+                            ->latest('id')
+                            ->paginate(8);
+
+        return view('livewire.course-index', compact('courses', 'categories', 'levels'));
+    }
+
+    public function resetFilters()
+    {
+        $this->reset(['category_id', 'level_id']);
     }
 }
