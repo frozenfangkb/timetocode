@@ -23,8 +23,8 @@ class ImageFactory extends Factory
     public function definition()
     {
         $f = new FakerHelper();
-        $height = rand(600, 900);
-        $width = intval($height * 2 / 3);
+        $height = 480;
+        $width = 640;
 
         return [
             'url' => $f->imageUrl($width, $height, 'NOT USED', false),

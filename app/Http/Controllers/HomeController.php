@@ -9,7 +9,7 @@ class HomeController extends Controller
 {
     public function __invoke()
     {
-        $courses = Course::where('status', Course::PUBLISHED)->latest('id')->get();
+        $courses = Course::where('status', Course::PUBLISHED)->latest('id')->get()->take(12);
 
         return view('welcome', compact('courses'));
     }

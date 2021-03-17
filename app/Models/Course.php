@@ -25,6 +25,11 @@ class Course extends Model
         return 5;
     }
 
+    public function getRouteKeyName()
+    {
+        return "slug";
+    }
+
     public function teacher()
     {
         return $this->belongsTo('App\Models\User', 'user_id');
