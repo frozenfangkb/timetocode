@@ -9,6 +9,11 @@ class Lesson extends Model
 {
     protected $guarded = ['id'];
     use HasFactory;
+    
+    public function getCompletedAttribute()
+    {
+        return $this->users->contains(auth()->user()->id);
+    }
 
     public function section()
     {

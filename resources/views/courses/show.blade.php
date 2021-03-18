@@ -109,14 +109,14 @@
                     </div>
 
                     @can('enrolled', $course)
+                        <a class="main-btn mt-4" href="{{route('courses.status', $course)}}">Continuar con el curso</a>
+                    @else
                         <form action="{{route('courses.enrolled', $course)}}" method="POST">
                             @csrf
                             <button type="submit" class="main-btn mt-4">
                                 Empezar curso
                             </button>
                         </form>
-                    @else
-                        <a class="main-btn mt-4" href="{{route('courses.status', $course)}}">Continuar con el curso</a>
                     @endcan
 
                     
