@@ -93,11 +93,11 @@ class RoleController extends Controller
             'permissions' => 'required'
         ]);
 
-        $role->name = $request->name;
+        $role->update([
+            'name' => $request->name
+        ]);
 
         $role->permissions()->sync($request->permissions);
-
-        $role->save();
 
         return redirect()->route('admin.roles.index', $role)->with('info', 'El rol se ha editado correctamente');
     }
