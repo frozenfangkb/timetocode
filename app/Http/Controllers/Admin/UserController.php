@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('can:Listar usuarios')->only('index');
+        $this->middleware('can:Editar usuario')->only('edit', 'update');
+    }
+
     /**
      * Display a listing of the resource.
      *
